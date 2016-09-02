@@ -15,8 +15,8 @@ class Module
         $localeDetector = $sm->get('LocaleDetector');
 
         // @todo Реалізувати розширене рішення @link https://juriansluiman.nl/article/118/auto-detect-user-locale-with-zend-http-request-headers-and-ext-intl
-        $locale = ($e->getRequest() instanceof HttpRequest)
-            ? $localeDetector->detect(\Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+        $locale = (($request = $e->getRequest()) instanceof HttpRequest)
+            ? $localeDetector->detect(\Locale::acceptFromHttp($request->getServer('HTTP_ACCEPT_LANGUAGE')))
             : null;
 
         //\Zend\Debug\Debug::dump([$locale]); die(__METHOD__);
