@@ -27,9 +27,8 @@ class LocaleDetector
 
     public function __construct(array $locales = [])
     {
-        if (is_callable('exec')) {
-            exec('locale -a', $this->locales);
-        } else {
+        // if not possible call system function "locale"
+        if (false === (is_callable('exec') && exec('locale -a', $this->locales) && $this->locales)) {
             $this->locales = $locales;
         }
     }
@@ -52,10 +51,10 @@ class LocaleDetector
      */
     public function detect($httpLocale)
     {
-        if (false !== strpos($httpLocale, '_')) {
-            return $httpLocale;
-        } else {
+        if (false === strpos($httpLocale, '_')) {
             return $this->detectByLanguage($httpLocale);
+        } else {
+            return $httpLocale;
         }
     }
 
@@ -70,8 +69,8 @@ class LocaleDetector
     {
         $locale = $this->getDefaultLocale();
         foreach ($this->locales as $l) {
-            $regex = "/$langCode\_[A-Z]{2}$/";
-            if (preg_match($regex, $l)/* && file_exists(TRANSROOT . "/$lang.php")*/) {
+            $regex = "/{$langCode}\_[A-Z]{2}$/";
+            if (preg_match($regex, $l)/* && file_exists(TRANSROOT . "/{$lang.php}")*/) {
                 $locale = $l;
                 break;
             }

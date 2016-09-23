@@ -19,8 +19,6 @@ class Module
             ? $localeDetector->detect(\Locale::acceptFromHttp($request->getServer('HTTP_ACCEPT_LANGUAGE')))
             : null;
 
-        //\Zend\Debug\Debug::dump([$locale]); die(__METHOD__);
-
         $translator->setLocale($locale)
             ->setFallbackLocale($localeDetector->getDefaultLocale());
     }
