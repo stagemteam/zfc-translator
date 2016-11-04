@@ -26,7 +26,7 @@ class TranslatorDelegatorFactory implements DelegatorFactoryInterface
             if ($cpm->has('module')) {
                 /** @var ModulePlugin $modulePlugin */
                 $modulePlugin = $cpm->get('module');
-                $textDomain = $modulePlugin->setRealContext($service)->getModule()->getNamespace();
+                $textDomain = $modulePlugin->setRealContext($service)->getRealModule()->getName();
             } elseif ($cpm->has('current')) {
                 /** @var CurrentPlugin $currentPlugin */
                 $currentPlugin = $cpm->get('current');
