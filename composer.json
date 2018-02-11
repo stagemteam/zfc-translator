@@ -1,5 +1,5 @@
 {
-  "name": "stagemteam/zfc-translator",
+  "name": "stagem/zfc-translator",
   "description": "ZF translation setup for MVC and Expressive",
   "type": "library",
   "license": "MIT",
