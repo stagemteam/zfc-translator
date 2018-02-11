@@ -1,28 +1,32 @@
 {
-  "name": "agerecompany/zfc-translator",
-  "description": "Standard ZF2 translation setup",
+  "name": "stagemteam/zfc-translator",
+  "description": "ZF translation setup for MVC and Expressive",
   "type": "library",
   "license": "MIT",
   "keywords": [
     "translation",
     "gettext",
-    "agere"
+    "stagem"
   ],
   "authors": [
     {
-      "name": "Sergiy Popov",
-      "email": "popow.sergiy@gmail.com",
-      "homepage": "http://agere.com.ua/",
+      "name": "Serhii Popov",
+      "email": "popow.serhii@gmail.com",
+      "homepage": "http://stagem.com.ua/",
       "role": "Developer"
     }
   ],
-  "minimum-stability": "stable",
   "require": {
     "php": "^5.4 || ^7."
   },
   "autoload": {
     "psr-4": {
-      "Agere\\Translator\\": "src/"
+      "Stagem\\ZfcTranslator\\": "src/"
+    }
+  },
+  "extra": {
+    "zf": {
+      "config-provider": "Stagem\\ZfcTranslator\\ConfigProvider"
     }
   }
 }
