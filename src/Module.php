@@ -1,8 +1,8 @@
 <?php
-namespace Agere\Translator;
+namespace Stagem\Translator;
 
 use Zend\Http\Request as HttpRequest;
-use Agere\Translator\Http\LocaleDetector;
+use Stagem\Translator\Http\LocaleDetector;
 use Zend\Mvc\I18n\Translator;
 
 class Module
@@ -27,6 +27,10 @@ class Module
 
     public function getConfig()
     {
-        return include __DIR__ . '/../config/module.config.php';
+        $config = include __DIR__ . '/../config/module.config.php';
+        $config['service_manager'] = $config['dependencies'];
+        unset($config['dependencies']);
+
+        return $config;
     }
 }

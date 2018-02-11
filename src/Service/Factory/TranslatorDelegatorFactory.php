@@ -5,7 +5,7 @@
  * @author Popov Sergiy <popov@agere.com.ua>
  * @datetime: 16.10.2016 16:44
  */
-namespace Agere\Translator\Service\Factory;
+namespace Stagem\Translator\Service\Factory;
 
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;

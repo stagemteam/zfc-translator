@@ -7,7 +7,7 @@
  * @author Popov Sergiy <popov@agere.com.ua>
  * @datetime: 25.08.2016 12:32
  */
-namespace Agere\Translator\Http;
+namespace Stagem\Translator\Http;
 
 class LocaleDetector
 {

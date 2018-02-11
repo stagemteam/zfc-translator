@@ -7,7 +7,7 @@
  * @author Popov Sergiy <popov@agere.com.ua>
  * @datetime: 11.11.2016 10:46
  */
-namespace Agere\Translator\Service\Factory;
+namespace Stagem\Translator\Service\Factory;
 
 /**
  * @todo Це заготовка яку потрібно реалізувати

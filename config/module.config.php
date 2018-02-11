@@ -1,20 +1,22 @@
 <?php
-namespace Agere\Translator;
+
+namespace Stagem\Translator;
 
 return [
-    'service_manager' => [
+    'dependencies' => [
         'aliases' => [
             'translator' => 'MvcTranslator',
             'LocaleDetector' => Http\LocaleDetector::class,
         ],
         'factories' => [
-            Http\LocaleDetector::class => Http\LocaleDetectorFactory::class
+            Http\LocaleDetector::class => Http\LocaleDetectorFactory::class,
         ]
         //'abstract_factories' => array(
         //    'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
         //    'Zend\Log\LoggerAbstractServiceFactory',
         //),
     ],
+
     'translator' => [
         'locale' => 'en_GB',
         'translation_file_patterns' => [
@@ -25,7 +27,6 @@ return [
                 'text_domain' => __NAMESPACE__,
             ],
         ],
-
         'locales' => [
             'af_ZA',
             'am_ET',
@@ -237,6 +238,6 @@ return [
             'zh_SG',
             'zh_TW',
             'zu_ZA',
-        ]
+        ],
     ],
 ];
