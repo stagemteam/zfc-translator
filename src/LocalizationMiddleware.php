@@ -13,14 +13,14 @@
  * @license https://opensource.org/licenses/MIT The MIT License (MIT)
  */
 
-namespace Stagem\Translator;
+namespace Stagem\ZfcTranslator;
 
 use Locale;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Stagem\Translator\Http\LocaleDetector;
+use Stagem\ZfcTranslator\Http\LocaleDetector;
 use Zend\I18n\Translator\TranslatorInterface;
 use Zend\I18n\Translator\Translator;
 
@@ -43,12 +43,11 @@ class LocalizationMiddleware implements MiddlewareInterface
      */
     protected $config;
 
-    public function __construct(TranslatorInterface $translator, LocaleDetector $localeDetector, $config = null)
+    public function __construct(TranslatorInterface $translator, LocaleDetector $localeDetector, array $config = null)
     {
         $this->translator = $translator;
         $this->localeDetector = $localeDetector;
         $this->config = $config;
-
         //$i18nTranslator = Translator::factory($config['translator']);
         //if ($container->has('Zend\I18n\Translator\TranslatorInterface')) {
         //    return new MvcTranslator($container->get('Zend\I18n\Translator\TranslatorInterface'));
@@ -58,12 +57,11 @@ class LocalizationMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         // Get locale from route, fallback to the user's browser preference
-        $locale = $request->getAttribute(
-            'locale',
-            Locale::acceptFromHttp(
-                $request->getServerParams()['HTTP_ACCEPT_LANGUAGE'] ?? $this->config['translator']['locale']
-            )
-        );
+        #$locale = $request->getAttribute('locale') ?: Locale::acceptFromHttp(
+        #    $request->getServerParams()['HTTP_ACCEPT_LANGUAGE'] ?? $this->config['translator']['locale']
+        #);
+        $locale = $request->getAttribute('locale') ?: $this->config['translator']['locale'];
+        $locale = $this->localeDetector->detect($locale);
 
         // Set up translator
         $this->translator->setLocale($locale)

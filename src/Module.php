@@ -1,8 +1,8 @@
 <?php
-namespace Stagem\Translator;
+namespace Stagem\ZfcTranslator;
 
 use Zend\Http\Request as HttpRequest;
-use Stagem\Translator\Http\LocaleDetector;
+use Stagem\ZfcTranslator\Http\LocaleDetector;
 use Zend\Mvc\I18n\Translator;
 
 class Module

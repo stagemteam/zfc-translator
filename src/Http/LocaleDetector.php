@@ -2,12 +2,12 @@
 /**
  * Http local detector
  *
- * @category Agere
- * @package Agere_Translator
- * @author Popov Sergiy <popov@agere.com.ua>
+ * @category Popov
+ * @package Popov_Translator
+ * @author Serhii Popov <popow.serhii@gmail.com>
  * @datetime: 25.08.2016 12:32
  */
-namespace Stagem\Translator\Http;
+namespace Stagem\ZfcTranslator\Http;
 
 class LocaleDetector
 {

@@ -2,12 +2,12 @@
 /**
  * Enter description here...
  *
- * @category Agere
- * @package Agere_<package>
- * @author Popov Sergiy <popov@agere.com.ua>
+ * @category Popov
+ * @package Popov_<package>
+ * @author Serhii Popov <popow.serhii@gmail.com>
  * @datetime: 11.11.2016 10:46
  */
-namespace Stagem\Translator\Service\Factory;
+namespace Stagem\ZfcTranslator\Service\Factory;
 
 /**
  * @todo Це заготовка яку потрібно реалізувати

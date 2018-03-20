@@ -1,6 +1,6 @@
 <?php
 
-namespace Stagem\Translator;
+namespace Stagem\ZfcTranslator;
 
 return [
     'dependencies' => [
