@@ -26,6 +26,8 @@ use Zend\I18n\Translator\Translator;
 
 class LocalizationMiddleware implements MiddlewareInterface
 {
+    const LANG_ATTRIBUTE = 'lang';
+
     const LOCALIZATION_ATTRIBUTE = 'locale';
 
     /**
@@ -60,14 +62,19 @@ class LocalizationMiddleware implements MiddlewareInterface
         #$locale = $request->getAttribute('locale') ?: Locale::acceptFromHttp(
         #    $request->getServerParams()['HTTP_ACCEPT_LANGUAGE'] ?? $this->config['translator']['locale']
         #);
-        $locale = $request->getAttribute('locale') ?: $this->config['translator']['locale'];
+        $locale = $request->getAttribute('lang') ?: $this->config['translator']['locale'];
         $locale = $this->localeDetector->detect($locale);
+        $lang = explode('_', $locale)[0];
 
         // Set up translator
         $this->translator->setLocale($locale)
             ->setFallbackLocale($this->localeDetector->getDefaultLocale());
 
         // Store the locale as a request attribute
-        return $handler->handle($request->withAttribute(self::LOCALIZATION_ATTRIBUTE, $locale));
+        return $handler->handle(
+            $request
+                ->withAttribute(self::LANG_ATTRIBUTE, $lang)
+                ->withAttribute(self::LOCALIZATION_ATTRIBUTE, $locale)
+        );
     }
 }
