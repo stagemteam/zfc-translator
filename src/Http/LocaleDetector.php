@@ -28,9 +28,9 @@ class LocaleDetector
     public function __construct(array $locales = [])
     {
         // if not possible call system function "locale"
-        if (false === (function_exists('exec') && exec('locale -a', $this->locales) && $this->locales)) {
+        #if (false === (function_exists('exec') && exec('locale -a', $this->locales) && $this->locales)) {
             $this->locales = $locales;
-        }
+        #}
     }
 
     public function setDefaultLocale($locale)
