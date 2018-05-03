@@ -5,7 +5,8 @@ namespace Stagem\ZfcTranslator;
 return [
     'dependencies' => [
         'aliases' => [
-            'translator' => 'MvcTranslator',
+            //'translator' => 'MvcTranslator',
+            'translator' => \Zend\I18n\Translator\TranslatorInterface::class,
             'LocaleDetector' => Http\LocaleDetector::class,
         ],
         'factories' => [

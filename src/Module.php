@@ -12,7 +12,7 @@ class Module
         $sm = $e->getApplication()->getServiceManager();
         //$config = $sm->get('Config');
         /** @var Translator $translator */
-        $translator = $sm->get('Translator');
+        $translator = $sm->get('translator');
         /** @var LocaleDetector $localeDetector */
         $localeDetector = $sm->get('LocaleDetector');
 
